@@ -1,0 +1,370 @@
+/* =========================================
+   1. Reset & Base Styles
+   ========================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: #1c2127;
+  color: #fefefe;
+}
+
+/* =========================================
+   2. Layout & Centering
+   ========================================= */
+.page-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  /* RESPONSIVE TWEAK: Adjusted padding for mobile edges */
+  padding: 15px;
+  background-color: #1c2127;
+}
+
+.login-card {
+  margin: auto;
+  background: #1c2127;
+  width: 100%;
+  max-width: 480px;
+  /* RESPONSIVE TWEAK: Default padding is 40px, but we override this later for mobile */
+  padding: 40px;
+  border-radius: 12px;
+  /* Added border for better visibility on dark backgrounds if needed */
+  /* border: 1px solid #2a3036; */
+}
+
+/* =========================================
+   3. Header Section
+   ========================================= */
+.logo {
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: #fefefe;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.security-banner {
+  font-size: 0.75rem;
+  background-color: #312f23;
+  color: #fefefe;
+  padding: 10px 12px;
+  border-radius: 6px;
+  margin-bottom: 25px;
+  line-height: 1.4;
+  border: 1px solid #4a4736;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* RESPONSIVE TWEAK: Prevent icon from squishing */
+.security-banner svg {
+  flex-shrink: 0;
+  margin-top: 2px; /* Visual alignment with text */
+}
+
+/* RESPONSIVE TWEAK: Ensure long URL wraps on small screens */
+.security-banner span {
+  word-break: break-word;
+}
+
+.security-banner::-webkit-scrollbar {
+  display: none;
+}
+
+.header-section h1 {
+  font-size: 1.5rem;
+  color: #fefefe;
+  margin-bottom: 5px;
+  line-height: 1.2;
+}
+
+.header-section h3 {
+  font-size: 0.9rem;
+  color: #aaa;
+  font-weight: 400;
+  margin-bottom: 25px;
+}
+
+/* =========================================
+   4. Tabs
+   ========================================= */
+.tab-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  background: #252a30;
+  padding: 4px;
+  border-radius: 10px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  color: #bbb;
+  transition: all 0.2s ease;
+
+  /* RESPONSIVE TWEAK: handle text overflow if labels are long */
+  white-space: nowrap;
+}
+
+.tab:hover {
+  color: #fff;
+}
+
+.tab.active {
+  background: #2f343a;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================
+   5. Form Inputs & Icons
+   ========================================= */
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #fefefe;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 12px;
+  padding-left: 40px;
+  padding-right: 50px;
+  background-color: #20252b;
+  border: 1px solid #34393f;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+
+  /* Fix for iOS removing shadow */
+  -webkit-appearance: none;
+}
+
+.input-wrapper input::placeholder {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #666;
+}
+
+.input-wrapper input:focus {
+  border-color: #6d44e0;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  color: #666;
+  pointer-events: none;
+  transition: color 0.2s;
+  flex-shrink: 0; /* Prevent icon shrinking */
+}
+
+#toggle-password {
+  position: absolute;
+  right: 15px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: #666;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: color 0.2s;
+}
+
+#toggle-password:hover {
+  color: #fff;
+}
+
+.forgot-password {
+  align-self: flex-end;
+  font-size: 0.8rem;
+  color: #6ca6bd;
+  text-decoration: none;
+  margin-top: 8px;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
+/* =========================================
+   6. Buttons & Footer
+   ========================================= */
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to right, #6d44e0, #ed5272);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: opacity 0.2s;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 25px 0;
+  color: #555;
+  font-size: 0.8rem;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #343d44;
+}
+
+.divider span {
+  padding: 0 10px;
+}
+
+.btn-google {
+  width: 100%;
+  padding: 12px;
+  background: #1c2127;
+  border: 1px solid #34393f;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: #fefefe;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.btn-google:hover {
+  background-color: #252a30;
+}
+
+.signup-footer {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.signup-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #6ca6bd;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.signup-link:hover {
+  color: #fff;
+}
+
+.signup-link svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s;
+}
+
+.signup-link:hover svg {
+  transform: translateX(-3px);
+}
+
+/* =========================================
+   7. MEDIA QUERIES (Responsiveness)
+   ========================================= */
+
+/* Mobile Devices (Max Width 480px) */
+@media screen and (max-width: 480px) {
+  /* Reduce wrapper padding so card is closer to edge */
+  .page-wrapper {
+    padding: 10px;
+  }
+
+  /* Shrink internal card padding to give content more room */
+  .login-card {
+    padding: 25px 20px;
+    max-width: 100%;
+  }
+
+  /* Make Header smaller */
+  .header-section h1 {
+    font-size: 1.35rem;
+  }
+
+  /* Adjust Tab size/text */
+  .tab {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+}
+
+/* Very Small Devices (Max Width 350px - e.g., iPhone SE, Galaxy Fold front) */
+@media screen and (max-width: 350px) {
+  .header-section h1 {
+    font-size: 1.2rem;
+  }
+
+  .tab {
+    font-size: 0.75rem;
+  }
+
+  .btn-google {
+    font-size: 0.85rem;
+  }
+}
